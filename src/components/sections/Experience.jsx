@@ -23,7 +23,7 @@ const Experience = () => {
                 </div>
 
                 {/* Experience card */}
-                <div className="rounded-lg border border-navy-700 bg-navy-800 p-6 shadow-lg transition-all hover:border-blue-500">
+                <div className="rounded-lg border border-navy-700 bg-navy-800 p-6 shadow-lg transition-all hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10">
                   <div className="flex items-start gap-4">
                     {/* Company logo placeholder */}
                     <div className="flex-shrink-0 p-3 bg-navy-700 rounded-lg">

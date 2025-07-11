@@ -23,8 +23,10 @@ const TimelineCard = ({
         <div 
           className={`
             ${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-900 border-gray-700'} 
-            rounded-lg p-5 transition-all duration-300 
-            shadow-md border hover:shadow-xl hover:translate-y-[-5px]
+            rounded-lg p-5 
+            transition-all duration-300 ease-in-out
+            shadow-md border 
+            hover:shadow-2xl hover:shadow-blue-500/20 hover:translate-y-[-5px]
             relative
           `}
         >
