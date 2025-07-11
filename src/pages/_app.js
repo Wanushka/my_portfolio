@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
             crossOrigin="anonymous" 
             referrerPolicy="no-referrer" 
           />
-          <title>Portfolio</title>
+          <title>wanushka lakmal</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <Component {...pageProps} />
