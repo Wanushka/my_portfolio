@@ -1,27 +1,3 @@
-export const projectsData = [
-  {
-    title: "Project 1",
-    description: "A web app built with Next.js and Tailwind CSS.",
-    image: "/images/projects/project1.jpg",
-    link: "https://project1.example.com",
-    technologies: ["Next.js", "Tailwind CSS"],
-  },
-  {
-    title: "Project 2",
-    description: "An e-commerce platform with payment integration.",
-    image: "/images/projects/project2.jpg",
-    link: "https://project2.example.com",
-    technologies: ["React", "Node.js"],
-  },
-  {
-    title: "Project 3",
-    description: "A portfolio website showcasing my work.",
-    image: "/images/projects/project3.jpg",
-    link: "https://project3.example.com",
-    technologies: ["Next.js", "Framer Motion"],
-  },
-];
-
 export const experienceData = [
   {
     title: "Intern Mobile App Developer",
@@ -29,10 +5,14 @@ export const experienceData = [
     location: "No.53, Mahabage Road, Ragama",
     duration: "2025 Feb - Present",
     achievements: [
-      "Lead development of web applications using React and Node.js",
-      "Implemented CI/CD pipelines reducing deployment time by 40%",
-      "Mentored 5 junior developers and conducted code reviews",
-      "Architected and deployed microservices infrastructure",
+      "Spearheaded the development of multiple Flutter-based mobile app features, improving app functionality and user experience across Android platforms.",
+      "Designed and implemented secure user authentication, real-time database integration, and push notifications using Firebase, ensuring smooth and reliable data flow.",
+      "Developed and connected mobile apps with FastAPI-powered backends, enabling efficient API data handling for various app modules.",
+      "Tackled complex challenges related to state management, API integration, and app performance optimization, ensuring stable and scalable app releases.",
+      "Built reusable components and followed clean code practices, improving app maintainability and reducing future development effort.",
+      "common development tasks such as API testing and debugging to speed up the testing process and minimize manual work.",
+      "Collaborated with senior engineers in code reviews, feature planning, and app design discussions, gaining valuable real-world experience in team-based mobile development.",
+      "Contributed to reducing app loading time and improving performance by optimizing API calls, images, and UI rendering.",
     ],
     technologies: ["Flutter", "Python", "Firebase", "FastAPI", "Dart"],
   },

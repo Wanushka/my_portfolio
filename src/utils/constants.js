@@ -4,7 +4,7 @@ export const NAV_LINKS = [
   { name: "Education", href: "#education" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
-  { name: "Certifications", href: "#certifications" },
+  // { name: "Certifications", href: "#certifications" },
   { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" },
 ];

@@ -110,7 +110,7 @@ const Projects = () => {
         </AnimatedSection>
       </section>
 
-      <section id="other-projects" className="section pb-16">
+      {/* <section id="other-projects" className="section pb-16">
         <AnimatedSection>
           <SectionHeading title="Other Projects" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -149,7 +149,7 @@ const Projects = () => {
             </Link>
           </div>
         </AnimatedSection>
-      </section>
+      </section> */}
     </>
   );
 };
