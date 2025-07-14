@@ -2,7 +2,7 @@ export const experienceData = [
   {
     title: "Intern Mobile App Developer",
     company: "Silverline IT Pvt Ltd",
-    location: "No.53, Mahabage Road, Ragama",
+    location: "No.52, Mahabage Road, Ragama",
     duration: "2025 Feb - Present",
     achievements: [
       "Spearheaded the development of multiple Flutter-based mobile app features, improving app functionality and user experience across Android platforms.",
