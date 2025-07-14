@@ -24,12 +24,12 @@ export const projectsData = [
     github: "https://github.com/username/project3",
     technologies: ["React.js", "Node.js", "MongoDB", "Express.js"],
   },
-    {
-    title: "Meeting Attendance Managing System",
-    description: "A comprehensive system for managing bookshop operations, including inventory and sales.",
-    image: "/images/projects/project3.jpg",
-    link: "https://project3.example.com",
-    github: "https://github.com/username/project3",
-    technologies: ["React.js", "Node.js", "MySQL", "Express.js"],
-  },
+  //   {
+  //   title: "Meeting Attendance Managing System",
+  //   description: "A comprehensive system for managing bookshop operations, including inventory and sales.",
+  //   image: "/images/projects/project3.jpg",
+  //   link: "https://project3.example.com",
+  //   github: "https://github.com/username/project3",
+  //   technologies: ["React.js", "Node.js", "MySQL", "Express.js"],
+  // },
 ];

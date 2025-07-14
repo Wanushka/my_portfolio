@@ -11,7 +11,7 @@ const Hero = () => {
       <div className="absolute top-10 left-10 w-72 h-72 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
       
-      <AnimatedSection className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+      <AnimatedSection className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-14 relative z-10">
         {/* Image Container - Left Side */}
         <div className="lg:w-1/2 relative group">
           <div className="w-[400px] h-[400px] relative rounded-full overflow-hidden border-4 border-purple-500 shadow-2xl transition-all duration-500 ease-in-out group-hover:border-purple-400 group-hover:shadow-purple-500/50 group-hover:shadow-3xl group-hover:scale-105">
@@ -50,7 +50,7 @@ const Hero = () => {
           {/* Role description */}
           <div className="mb-6">
             <p className="text-2xl text-gray-300 hover:text-white transition-colors duration-300 cursor-default">
-              I'm a <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors duration-300">Full-Stack Developer</span>
+              I'm a <span className="text-purple-400 font-semibold hover:text-purple-300 transition-colors duration-300">Software Engineer</span>
             </p>
           </div>
 

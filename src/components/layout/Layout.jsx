@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       theme === 'dark' ? 'bg-background-dark' : 'bg-background-light'
     }`}>
       <Navbar />
-      <main className="flex-grow pt-16">{children}</main>
+      <main className="flex-grow pt-4">{children}</main>
       <Footer />
     </div>
   );
