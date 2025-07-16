@@ -1,10 +1,13 @@
 import AnimatedSection from "../common/AnimatedSection";
 import SectionHeading from "../ui/SectionHeading";
 import { personalData } from "../../data/personal";
+import { useTheme } from "../../hooks/useTheme";
 
 const About = () => {
+  const { theme } = useTheme();
+
   return (
-    <section id="about" className="section pt-20 pb-16 ">
+    <section id="about" className="section pt-20 pb-16">
       <AnimatedSection>
         <SectionHeading
           title="About Me"
@@ -12,19 +15,33 @@ const About = () => {
         />
 
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 shadow-2xl border border-slate-700/50 hover:shadow-purple-500/10 hover:shadow-2xl transition-all duration-500 hover:border-purple-500/30">
-            <p className="text-lg mb-6 leading-relaxed text-slate-300">
+          <div
+            className={`rounded-2xl p-8 mb-8 shadow-2xl transition-all duration-500 ${
+              theme === "dark"
+                ? "bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:shadow-purple-500/10 hover:border-purple-500/30"
+                : "bg-white/90 backdrop-blur-sm border border-slate-200 hover:shadow-purple-500/10 hover:border-purple-500/30"
+            }`}
+          >
+            <p
+              className={`text-lg mb-6 leading-relaxed ${
+                theme === "dark" ? "text-slate-300" : "text-slate-600"
+              }`}
+            >
               Hi there! 👋 I'm{" "}
-              <span className="text-white font-semibold">
+              <span
+                className={`font-semibold ${
+                  theme === "dark" ? "text-white" : "text-slate-900"
+                }`}
+              >
                 {personalData.name}
               </span>
               , a passionate{" "}
-              <span className="text-blue-400 font-semibold">
+              <span className="text-blue-500 font-semibold">
                 {personalData.title}
               </span>{" "}
               who enjoys turning creative ideas into real digital experiences. I
               love building clean, user-friendly web apps and mobile apps,
-              exploring new tech, and solving fun coding puzzles. Let’s create
+              exploring new tech, and solving fun coding puzzles. Let's create
               something awesome together! 🚀
             </p>
 
@@ -43,7 +60,14 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-xl border border-slate-700/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 hover:scale-105 hover:border-blue-500/30 group">
+            {/* Who I Am Card */}
+            <div
+              className={`rounded-2xl p-8 shadow-xl transition-all duration-500 hover:scale-105 group ${
+                theme === "dark"
+                  ? "bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30"
+                  : "bg-white border border-slate-200 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-blue-500/30"
+              }`}
+            >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <span className="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-xl shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300 group-hover:scale-110">
                   👤
@@ -52,7 +76,11 @@ const About = () => {
                   Who I Am
                 </span>
               </h3>
-              <ul className="text-left space-y-5 text-slate-300 text-base leading-relaxed">
+              <ul
+                className={`text-left space-y-5 text-base leading-relaxed ${
+                  theme === "dark" ? "text-slate-300" : "text-slate-600"
+                }`}
+              >
                 <li className="flex items-start gap-4 hover:text-white transition duration-300">
                   <span className="text-blue-500 text-xl">▶</span>
                   <span>
@@ -77,7 +105,14 @@ const About = () => {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 shadow-xl border border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500 hover:scale-105 hover:border-purple-500/30 group">
+            {/* My Work Card */}
+            <div
+              className={`rounded-2xl p-8 shadow-xl transition-all duration-500 hover:scale-105 group ${
+                theme === "dark"
+                  ? "bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/30"
+                  : "bg-white border border-slate-200 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-purple-500/30"
+              }`}
+            >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <span className="bg-gradient-to-r from-purple-500 to-purple-600 p-3 rounded-xl shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-110">
                   💻
@@ -86,7 +121,11 @@ const About = () => {
                   My Work
                 </span>
               </h3>
-              <ul className="text-left space-y-4 text-slate-300 text-base leading-relaxed">
+              <ul
+                className={`text-left space-y-4 text-base leading-relaxed ${
+                  theme === "dark" ? "text-slate-300" : "text-slate-600"
+                }`}
+              >
                 <li className="flex items-start gap-3 hover:text-white transition-colors duration-300">
                   <span className="text-purple-400 mt-1">🚀</span>
                   <span>

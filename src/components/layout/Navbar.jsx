@@ -93,6 +93,7 @@ const Navbar = () => {
             </a>
           </div>
 
+          {/* For desktop navigation links */}
           <div className="hidden md:block">
             <nav className="ml-10 flex items-center space-x-6">
               {NAV_LINKS.map((link) => (
@@ -103,7 +104,9 @@ const Navbar = () => {
                   className={`text-sm font-medium transition-colors ${
                     activeSection === link.href.substring(1)
                       ? "text-primary-light dark:text-primary-dark"
-                      : "nav-link hover:text-primary-light dark:hover:text-primary-dark"
+                      : theme === "dark"
+                      ? "text-white hover:text-primary-dark"
+                      : "text-black hover:text-primary-light"
                   }`}
                 >
                   {link.name}
@@ -171,6 +174,7 @@ const Navbar = () => {
                 : "bg-background-light bg-opacity-95"
             }`}
           >
+            {/* For mobile navigation links */}
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {NAV_LINKS.map((link) => (
                 <a
@@ -181,7 +185,7 @@ const Navbar = () => {
                       ? "bg-gray-200 dark:bg-gray-700 text-primary-light dark:text-primary-dark"
                       : theme === "dark"
                       ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-200"
+                      : "text-black hover:bg-gray-100"
                   }`}
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
