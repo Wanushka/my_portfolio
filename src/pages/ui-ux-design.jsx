@@ -2,18 +2,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeading from '../components/ui/SectionHeading';
+import { uiUxProjects, uiUxCategories } from '../data/uiUxProjects';
 
 const UiUxProjects = () => {
-  const projects = [
-    // Add your UI/UX design projects here
-    {
-      title: "Project 1",
-      description: "Description of project 1",
-      image: "/images/ui-ux/project1.jpg",
-      tags: ["Figma", "Adobe XD"]
-    },
-    // Add more projects...
-  ];
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredProjects = selectedCategory === 'All' 
+    ? uiUxProjects 
+    : uiUxProjects.filter(project => project.category === selectedCategory);
 
   return (
     <div className="container mx-auto px-4 py-20">
@@ -26,9 +22,26 @@ const UiUxProjects = () => {
 
       <SectionHeading title="UI/UX Design Projects" />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {projects.map((project, index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center gap-4 mt-8 mb-12">
+        {uiUxCategories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-6 py-2 rounded-full transition-colors ${
+              selectedCategory === category
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredProjects.map((project, index) => (
+          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
             <div className="relative h-48">
               <Image
                 src={project.image}
@@ -55,6 +68,12 @@ const UiUxProjects = () => {
           </div>
         ))}
       </div>
+
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 dark:text-gray-400">No projects found in this category.</p>
+        </div>
+      )}
     </div>
   );
 };

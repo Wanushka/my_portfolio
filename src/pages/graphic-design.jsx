@@ -2,18 +2,14 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeading from '../components/ui/SectionHeading';
+import { graphicDesignProjects, graphicDesignCategories } from '../data/graphicDesignProjects';
 
 const GraphicDesignProjects = () => {
-  const projects = [
-    // Add your graphic design projects here
-    {
-      title: "Project 1",
-      description: "Description of project 1",
-      image: "/images/graphic-design/project1.jpg",
-      tags: ["Photoshop", "Illustrator"]
-    },
-    // Add more projects...
-  ];
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredProjects = selectedCategory === 'All' 
+    ? graphicDesignProjects 
+    : graphicDesignProjects.filter(project => project.category === selectedCategory);
 
   return (
     <div className="container mx-auto px-4 py-20">
@@ -26,35 +22,44 @@ const GraphicDesignProjects = () => {
 
       <SectionHeading title="Graphic Design Projects" />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {projects.map((project, index) => (
-          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-            <div className="relative h-48">
+      {/* Category Filter */}
+      <div className="flex flex-wrap justify-center gap-4 mt-8 mb-12">
+        {graphicDesignCategories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-6 py-2 rounded-full transition-colors ${
+              selectedCategory === category
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredProjects.map((project, index) => (
+          <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+            <div className="relative h-50">
               <Image
                 src={project.image}
                 alt={project.title}
                 width={400}
-                height={300}
+                height={400}
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tagIndex) => (
-                  <span
-                    key={tagIndex}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         ))}
       </div>
+
+      {filteredProjects.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 dark:text-gray-400">No projects found in this category.</p>
+        </div>
+      )}
     </div>
   );
 };
