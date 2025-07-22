@@ -1,8 +1,12 @@
 import { SOCIAL_LINKS } from "../../utils/constants";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const SocialLinks = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <div className="flex space-x-4">
+    <div className={`flex space-x-4 ${theme === 'light' ? 'text-blue-700' : 'text-gray-300'}`}>
       {SOCIAL_LINKS.map((link) => (
         <a
           key={link.name}

@@ -3,11 +3,13 @@ import AnimatedSection from "../common/AnimatedSection";
 import SectionHeading from "../ui/SectionHeading";
 import { projectsData } from "../../data/projects";
 import Image from "next/image";
+import { useTheme } from "../../hooks/useTheme";
 import Link from "next/link";
 
 const Projects = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
 
   // Duplicate the projects array to create seamless infinite scroll
   const duplicatedProjects = [...projectsData, ...projectsData];
@@ -39,7 +41,7 @@ const Projects = () => {
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
-                  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-400">
+                  <div className={`rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 group-hover:border-blue-500 dark:group-hover:border-blue-400 ${theme === 'light' ? 'text-black' : 'text-gray-300'}`}>
                     {/* Project Image */}
                     <div className="relative h-48 overflow-hidden">
                       <Image
@@ -83,10 +85,10 @@ const Projects = () => {
 
                     {/* Project Content */}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className={`text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors ${theme === 'light' ? 'text-black' : 'text-gray-300'}`}>
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
+                      <p className={`text-sm mb-4 line-clamp-2 ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                         {project.description}
                       </p>
                       
@@ -110,46 +112,86 @@ const Projects = () => {
         </AnimatedSection>
       </section>
 
-      {/* <section id="other-projects" className="section pb-16">
+      <section id="other-projects" className="section pb-16">
         <AnimatedSection>
           <SectionHeading title="Other Projects" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Link href="/graphic-design" className="block">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src="/images/graphic-design.jpg" // Add your image
-                    alt="Graphic Design Projects"
-                    width={640}
-                    height={360}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white">Graphic Design</h3>
-                  </div>
-                </div>
-              </div>
-            </Link>
+          <div className="max-w-6xl mx-auto">
 
-            <Link href="/ui-ux-design" className="block">
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 group">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src="/images/ui-ux-design.jpg" // Add your image
-                    alt="UI/UX Design Projects"
-                    width={640}
-                    height={360}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                    <h3 className="text-2xl font-bold text-white">UI/UX Design</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Graphic Design Card */}
+              <div className="group relative">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500">
+                  {/* Header with Icon */}
+                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-8 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                      Graphic Design
+                    </h3>
+                    <p className="text-purple-600 dark:text-purple-400 font-medium text-sm">
+                      Visual Identity & Branding
+                    </p>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+
+                    {/* CTA Button */}
+                    <Link href="/graphic-design" className="block">
+                      <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 group/btn">
+                        <span className="flex items-center justify-center gap-2">
+                          View Sample
+                          <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
-            </Link>
+
+              {/* UI/UX Design Card */}
+              <div className="group relative">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500">
+                  {/* Header with Icon */}
+                  <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-8 text-center">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl shadow-lg mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                      UI/UX Design
+                    </h3>
+                    <p className="text-blue-600 dark:text-blue-400 font-medium text-sm">
+                      User Experience & Interface
+                    </p>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+                    {/* CTA Button */}
+                    <Link href="/ui-ux-design" className="block">
+                      <button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 group/btn">
+                        <span className="flex items-center justify-center gap-2">
+                          View Sample
+                          <svg className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </span>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </AnimatedSection>
-      </section> */}
+      </section>
     </>
   );
 };

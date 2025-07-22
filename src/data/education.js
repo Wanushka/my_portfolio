@@ -4,7 +4,7 @@ export const educationData = [
     institution: "Institute of Technology, University of Moratuwa",
     location: "Diyagama Junction, Homagama",
     duration: "2023 - 2027",
-    score: "GPA: 3.4",
+    score: "GPA: 3.16",
   },
   {
     degree: "Advanced Level",

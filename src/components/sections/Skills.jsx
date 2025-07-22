@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
 import AnimatedSection from "../common/AnimatedSection";
 import SectionHeading from "../ui/SectionHeading";
 
@@ -28,48 +29,63 @@ const skillsData = {
 };
 
 const SkillCard = ({ name, icon }) => {
+  const { theme } = useContext(ThemeContext);
+  
   // Extract a color from the icon URL to use for the shadow
   const getIconColor = () => {
     const colorMap = {
-      'react': 'rgba(97, 218, 251, 0.5)',       // React blue
-      'nodejs': 'rgba(104, 160, 99, 0.5)',      // Node.js green
-      'javascript': 'rgba(240, 219, 79, 0.5)',  // JavaScript yellow
-      'typescript': 'rgba(49, 120, 198, 0.5)',  // TypeScript blue
-      'python': 'rgba(53, 114, 165, 0.5)',      // Python blue
-      'java': 'rgba(227, 76, 38, 0.5)',         // Java orange
-      'cplusplus': 'rgba(0, 117, 192, 0.5)',    // C++ blue
-      'go': 'rgba(0, 173, 216, 0.5)',           // Go blue
-      'dart': 'rgba(0, 180, 216, 0.5)',         // Dart blue
-      'firebase': 'rgba(255, 202, 40, 0.5)',    // Firebase yellow
-      'postgresql': 'rgba(51, 103, 145, 0.5)',  // PostgreSQL blue
-      'mysql': 'rgba(83, 130, 161, 0.5)',       // MySQL blue
-      'mongodb': 'rgba(77, 179, 61, 0.5)',      // MongoDB green
-      'docker': 'rgba(36, 150, 237, 0.5)',      // Docker blue
-      'flutter': 'rgba(69, 208, 238, 0.5)',     // Flutter blue
-      'googlecloud': 'rgba(59, 137, 238, 0.5)', // GCP blue
-      'azure': 'rgba(0, 137, 214, 0.5)',        // Azure blue
-      'bootstrap': 'rgba(86, 61, 124, 0.5)',    // Bootstrap purple
-      'tailwindcss': 'rgba(56, 189, 248, 0.5)', // Tailwind blue
-      'nextjs': 'rgba(0, 0, 0, 0.5)',           // Next.js black
-      'terraform': 'rgba(94, 86, 225, 0.5)',    // Terraform purple
-      'html5': 'rgba(227, 76, 38, 0.5)',        // HTML orange
-      'css3': 'rgba(38, 77, 228, 0.5)',         // CSS blue
-      'nginx': 'rgba(0, 150, 57, 0.5)'          // NGINX green
+      'react': theme === 'dark' ? 'rgba(97, 218, 251, 0.5)' : 'rgba(97, 218, 251, 0.3)',
+      'nodejs': theme === 'dark' ? 'rgba(104, 160, 99, 0.5)' : 'rgba(104, 160, 99, 0.3)',
+      'javascript': theme === 'dark' ? 'rgba(240, 219, 79, 0.5)' : 'rgba(240, 219, 79, 0.4)',
+      'typescript': theme === 'dark' ? 'rgba(49, 120, 198, 0.5)' : 'rgba(49, 120, 198, 0.3)',
+      'python': theme === 'dark' ? 'rgba(53, 114, 165, 0.5)' : 'rgba(53, 114, 165, 0.3)',
+      'java': theme === 'dark' ? 'rgba(227, 76, 38, 0.5)' : 'rgba(227, 76, 38, 0.3)',
+      'cplusplus': theme === 'dark' ? 'rgba(0, 117, 192, 0.5)' : 'rgba(0, 117, 192, 0.3)',
+      'go': theme === 'dark' ? 'rgba(0, 173, 216, 0.5)' : 'rgba(0, 173, 216, 0.3)',
+      'dart': theme === 'dark' ? 'rgba(0, 180, 216, 0.5)' : 'rgba(0, 180, 216, 0.3)',
+      'firebase': theme === 'dark' ? 'rgba(255, 202, 40, 0.5)' : 'rgba(255, 202, 40, 0.4)',
+      'postgresql': theme === 'dark' ? 'rgba(51, 103, 145, 0.5)' : 'rgba(51, 103, 145, 0.3)',
+      'mysql': theme === 'dark' ? 'rgba(83, 130, 161, 0.5)' : 'rgba(83, 130, 161, 0.3)',
+      'mongodb': theme === 'dark' ? 'rgba(77, 179, 61, 0.5)' : 'rgba(77, 179, 61, 0.3)',
+      'docker': theme === 'dark' ? 'rgba(36, 150, 237, 0.5)' : 'rgba(36, 150, 237, 0.3)',
+      'flutter': theme === 'dark' ? 'rgba(69, 208, 238, 0.5)' : 'rgba(69, 208, 238, 0.3)',
+      'googlecloud': theme === 'dark' ? 'rgba(59, 137, 238, 0.5)' : 'rgba(59, 137, 238, 0.3)',
+      'azure': theme === 'dark' ? 'rgba(0, 137, 214, 0.5)' : 'rgba(0, 137, 214, 0.3)',
+      'bootstrap': theme === 'dark' ? 'rgba(86, 61, 124, 0.5)' : 'rgba(86, 61, 124, 0.3)',
+      'tailwindcss': theme === 'dark' ? 'rgba(56, 189, 248, 0.5)' : 'rgba(56, 189, 248, 0.3)',
+      'nextjs': theme === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(0, 0, 0, 0.2)',
+      'terraform': theme === 'dark' ? 'rgba(94, 86, 225, 0.5)' : 'rgba(94, 86, 225, 0.3)',
+      'html5': theme === 'dark' ? 'rgba(227, 76, 38, 0.5)' : 'rgba(227, 76, 38, 0.3)',
+      'css3': theme === 'dark' ? 'rgba(38, 77, 228, 0.5)' : 'rgba(38, 77, 228, 0.3)',
+      'nginx': theme === 'dark' ? 'rgba(0, 150, 57, 0.5)' : 'rgba(0, 150, 57, 0.3)'
     };
     
     // Find the matching color from the URL
     const iconLower = icon.toLowerCase();
     const matchedColor = Object.keys(colorMap).find(key => iconLower.includes(key));
     
-    return matchedColor ? colorMap[matchedColor] : 'rgba(100, 100, 100, 0.5)'; // Default gray
+    return matchedColor ? colorMap[matchedColor] : theme === 'dark' ? 'rgba(100, 100, 100, 0.5)' : 'rgba(100, 100, 100, 0.3)';
   };
 
   const shadowColor = getIconColor();
 
+  // Theme-aware class names
+  const cardClasses = theme === 'dark' 
+    ? "bg-gray-800 hover:bg-gray-700 border-gray-700 hover:border-gray-600" 
+    : "bg-white hover:bg-gray-50 border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md";
+
+  const textClasses = theme === 'dark' 
+    ? "text-gray-300 group-hover:text-white" 
+    : "text-gray-700 group-hover:text-gray-900";
+
+  const fallbackClasses = theme === 'dark' 
+    ? "bg-gray-600 text-white" 
+    : "bg-gray-300 text-gray-700";
+
   return (
     <div className="group relative">
       <div 
-        className="bg-gray-800 rounded-xl p-3 flex flex-col items-center justify-center min-h-[90px] transition-all duration-300 hover:scale-105 hover:bg-gray-700 cursor-pointer border border-gray-700 hover:border-gray-600"
+        className={`${cardClasses} rounded-xl p-3 flex flex-col items-center justify-center min-h-[90px] transition-all duration-300 hover:scale-105 cursor-pointer border`}
         style={{
           '--shadow-color': shadowColor,
         }}
@@ -77,7 +93,7 @@ const SkillCard = ({ name, icon }) => {
           e.currentTarget.style.boxShadow = `0 0 15px 3px var(--shadow-color)`;
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = 'none';
+          e.currentTarget.style.boxShadow = theme === 'light' ? '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)' : 'none';
         }}
       >
         <div className="w-10 h-10 mb-2 flex items-center justify-center">
@@ -90,11 +106,11 @@ const SkillCard = ({ name, icon }) => {
               e.target.nextSibling.style.display = 'flex';
             }}
           />
-          <div className="hidden w-10 h-10 bg-gray-600 rounded-lg items-center justify-center text-white text-xs font-bold">
+          <div className={`hidden w-10 h-10 ${fallbackClasses} rounded-lg items-center justify-center text-xs font-bold`}>
             {name.slice(0, 2)}
           </div>
         </div>
-        <span className="text-gray-300 text-xs font-medium text-center group-hover:text-white transition-colors duration-300">
+        <span className={`${textClasses} text-xs font-medium text-center transition-colors duration-300`}>
           {name}
         </span>
       </div>
@@ -110,10 +126,6 @@ const ModernSkillsSection = () => {
         <div className="max-w-7xl mx-auto">
           {/* Languages Section */}
           <div className="mb-16">
-            {/* <h3 className="text-2xl font-bold text-center mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Languages
-            </h3> */}
-            {/* <div className="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-8 rounded-full"></div> */}
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
               {skillsData.languages.map((skill, index) => (
                 <SkillCard key={index} name={skill.name} icon={skill.icon} />
@@ -123,10 +135,6 @@ const ModernSkillsSection = () => {
           
           {/* Technologies and Frameworks Section */}
           <div>
-            {/* <h3 className="text-2xl font-bold text-center mb-2 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-              Technologies and Frameworks
-            </h3> */}
-            {/* <div className="w-20 h-1 bg-gradient-to-r from-purple-400 to-pink-500 mx-auto mb-8 rounded-full"></div> */}
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
               {skillsData.technologies.map((skill, index) => (
                 <SkillCard key={index} name={skill.name} icon={skill.icon} />
