@@ -1,9 +1,15 @@
 export const educationData = [
+    {
+    degree: "BSc (Hons) Computing",
+    institution: "wrexham Glyndwr University",
+    location: "Nugegoda",
+    duration: "2025 - 2026",
+  },
   {
     degree: "National Diploma in Technology",
     institution: "Institute of Technology, University of Moratuwa",
     location: "Diyagama Junction, Homagama",
-    duration: "2023 - 2027",
+    duration: "2023 - 2025",
     score: "GPA: 3.16",
   },
   {
